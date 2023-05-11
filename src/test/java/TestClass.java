@@ -4,6 +4,119 @@ import org.junit.jupiter.api.Test;
 public class TestClass {
 
 
+
+
+    @Test
+    public void decreaseVolumeTestWithOne() {
+        Radio radio = new Radio();
+        radio.volume = 1;
+        radio.decreaseVolume();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void decreaseVolumeTest() {
+        Radio radio = new Radio();
+        radio.volume = 0;
+        radio.decreaseVolume();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void negativeDecreaseVolumeTest() {
+        Radio radio = new Radio();
+        radio.volume = 101;
+        radio.decreaseVolume();
+        int exp = 101;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+
+    @Test
+    public void radioSetterTest() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(4);
+        int exp = 4;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void radioSetterTestWithNine() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
+        int exp = 9;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test()
+    public void negativeRadioSetterTest() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(20);
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test()
+    public void negativeRadioSetterTestWithMSeven() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-7);
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void radioGetterTest() {
+        Radio radio = new Radio();
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    /////////////////////////////////////////////
+    @Test
+    public void volumeGetterTest() {
+        Radio radio = new Radio();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void volumeSetterTest() {
+        Radio radio = new Radio();
+        radio.setVolume(20);
+        int exp = 20;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void getStationQuantityTest() {
+        Radio radio = new Radio(50);
+        int act = radio.getStationQuantity();
+        int exp = 50;
+
+        Assertions.assertEquals(exp, act);
+    }
     @Test
     public void nextStationTest() {
         Radio radio = new Radio();
@@ -121,118 +234,6 @@ public class TestClass {
         radio.increaseVolume();
         int exp = 100;
         int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void decreaseVolumeTestWithOne() {
-        Radio radio = new Radio();
-        radio.volume = 1;
-        radio.decreaseVolume();
-        int exp = 0;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void decreaseVolumeTest() {
-        Radio radio = new Radio();
-        radio.volume = 0;
-        radio.decreaseVolume();
-        int exp = 0;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void negativeDecreaseVolumeTest() {
-        Radio radio = new Radio();
-        radio.volume = 101;
-        radio.decreaseVolume();
-        int exp = 101;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-
-    @Test
-    public void radioSetterTest() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(4);
-        int exp = 4;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void radioSetterTestWithNine() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-        int exp = 9;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test()
-    public void negativeRadioSetterTest() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(20);
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test()
-    public void negativeRadioSetterTestWithMSeven() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(-7);
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void radioGetterTest() {
-        Radio radio = new Radio();
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    /////////////////////////////////////////////
-    @Test
-    public void volumeGetterTest() {
-        Radio radio = new Radio();
-        int exp = 0;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void volumeSetterTest() {
-        Radio radio = new Radio();
-        radio.setVolume(20);
-        int exp = 20;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test
-    public void getStationQuantityTest() {
-        Radio radio = new Radio(50);
-        int act = radio.getStationQuantity();
-        int exp = 50;
 
         Assertions.assertEquals(exp, act);
     }

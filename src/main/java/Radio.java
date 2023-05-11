@@ -45,18 +45,18 @@ public class Radio {
         this.currentStation = (newStation >= 0) && (newStation <= maxStation) ? newStation : getCurrentStation();
     }
 /////////////////////////////////////////////////////
-
+    public void decreaseVolume() {
+        if (volume <= 100 && volume > 0) {
+            volume -= 1;
+    }
+}
     public void increaseVolume() {
         if (volume < 100 && volume >= 0) {
             volume += 1;
         }
     }
 
-    public void decreaseVolume() {
-        if (volume <= 100 && volume > 0) {
-            volume -= 1;
-        }
-    }
+
 
     ///////////////////////////////////////////////////////
     public void setVolume(int newVolume) {
