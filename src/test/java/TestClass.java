@@ -16,9 +16,9 @@ public class TestClass {
     }
 
     @Test
-    public void nextStationTestAfterNine() {
-        Radio radio = new Radio();
-        radio.currentStation = 9;
+    public void nextStationTestAfterMaximumQuantity() {
+        Radio radio = new Radio(50);
+        radio.currentStation = 49;
         radio.nextStation();
         int exp = 0;
         int act = radio.getCurrentStation();
@@ -28,7 +28,7 @@ public class TestClass {
 
     @Test
     public void prevStationTest() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.currentStation = 0;
         radio.prevStation();
         int exp = 9;
@@ -182,7 +182,7 @@ public class TestClass {
     @Test()
     public void negativeRadioSetterTest() {
         Radio radio = new Radio();
-        radio.setCurrentStation(10);
+        radio.setCurrentStation(20);
         int exp = 0;
         int act = radio.getCurrentStation();
 
@@ -224,6 +224,15 @@ public class TestClass {
         radio.setVolume(20);
         int exp = 20;
         int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void getStationQuantityTest() {
+        Radio radio = new Radio(50);
+        int act = radio.getStationQuantity();
+        int exp = 50;
 
         Assertions.assertEquals(exp, act);
     }
