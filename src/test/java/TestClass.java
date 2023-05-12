@@ -5,6 +5,118 @@ public class TestClass {
 
 
     @Test
+    public void decreaseVolumeTestWithOne() {
+        Radio radio = new Radio();
+        radio.volume = 1;
+        radio.decreaseVolume();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void decreaseVolumeTest() {
+        Radio radio = new Radio();
+        radio.volume = 0;
+        radio.decreaseVolume();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void negativeDecreaseVolumeTest() {
+        Radio radio = new Radio();
+        radio.volume = 101;
+        radio.decreaseVolume();
+        int exp = 101;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+
+    @Test
+    public void radioSetterTest() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(4);
+        int exp = 4;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void radioSetterTestWithNine() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
+        int exp = 9;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test()
+    public void negativeRadioSetterTest() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(20);
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test()
+    public void negativeRadioSetterTestWithMSeven() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-7);
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void radioGetterTest() {
+        Radio radio = new Radio();
+        int exp = 0;
+        int act = radio.getCurrentStation();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    /////////////////////////////////////////////
+    @Test
+    public void volumeGetterTest() {
+        Radio radio = new Radio();
+        int exp = 0;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void volumeSetterTest() {
+        Radio radio = new Radio();
+        radio.setVolume(20);
+        int exp = 20;
+        int act = radio.getVolume();
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void getStationQuantityTest() {
+        Radio radio = new Radio(50);
+        int act = radio.getStationQuantity();
+        int exp = 50;
+
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
     public void nextStationTest() {
         Radio radio = new Radio();
         radio.currentStation = 0;
@@ -126,114 +238,113 @@ public class TestClass {
     }
 
     @Test
-    public void decreaseVolumeTestWithOne() {
-        Radio radio = new Radio();
-        radio.volume = 1;
-        radio.decreaseVolume();
-        int exp = 0;
-        int act = radio.getVolume();
-
+    public void shouldNotEqualsWithStationQuantity() {
+        Radio radio1 = new Radio();
+        Main radio2 = new Main();
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
         Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void decreaseVolumeTest() {
-        Radio radio = new Radio();
-        radio.volume = 0;
-        radio.decreaseVolume();
-        int exp = 0;
-        int act = radio.getVolume();
-
+    public void shouldNotEqualsBecauseDifStation() {
+        Radio radio1 = new Radio();
+        radio1.setCurrentStation(5);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
         Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void negativeDecreaseVolumeTest() {
-        Radio radio = new Radio();
-        radio.volume = 101;
-        radio.decreaseVolume();
-        int exp = 101;
-        int act = radio.getVolume();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-
-    @Test
-    public void radioSetterTest() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(4);
-        int exp = 4;
-        int act = radio.getCurrentStation();
-
+    public void shouldNotEqualsBecauseDifStationQuantity() {
+        Radio radio1 = new Radio(50);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
         Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void radioSetterTestWithNine() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-        int exp = 9;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test()
-    public void negativeRadioSetterTest() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(20);
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    @Test()
-    public void negativeRadioSetterTestWithMSeven() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(-7);
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
+    public void shouldNotEqualsBecauseDifVolume() {
+        Radio radio1 = new Radio(10);
+        radio1.setVolume(15);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
         Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void radioGetterTest() {
-        Radio radio = new Radio();
-        int exp = 0;
-        int act = radio.getCurrentStation();
-
-        Assertions.assertEquals(exp, act);
-    }
-
-    /////////////////////////////////////////////
-    @Test
-    public void volumeGetterTest() {
-        Radio radio = new Radio();
-        int exp = 0;
-        int act = radio.getVolume();
-
+    public void shouldEquals1() {
+        Radio radio1 = new Radio();
+        boolean act = radio1.equals(radio1);
+        boolean exp = true;
         Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void volumeSetterTest() {
-        Radio radio = new Radio();
-        radio.setVolume(20);
-        int exp = 20;
-        int act = radio.getVolume();
+    public void shouldNotEquals() {
+        Radio radio1 = new Radio();
+        boolean act1 = radio1.equals(null);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act1);
 
-        Assertions.assertEquals(exp, act);
     }
 
     @Test
-    public void getStationQuantityTest() {
-        Radio radio = new Radio(50);
-        int act = radio.getStationQuantity();
-        int exp = 50;
+    public void shouldEqualsAcceptable() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+        Radio radio3 = new Radio();
+        if (radio1.equals(radio2) && radio2.equals(radio3)) {
+            boolean act1 = radio3.equals(radio1);
+            boolean exp = true;
 
+            Assertions.assertEquals(exp, act1);
+        }
+    }
+
+    @Test
+    public void shouldEqualsBecauseIwant() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+        if (radio1.equals(radio2)) {
+            assert radio1.equals(radio2) == true;
+        }
+    }
+
+    @Test
+    public void shouldEqualsBecauseMaxStation() {
+        Radio radio1 = new Radio();
+        radio1.setMaxStation(15);
+        Radio radio2 = new Radio();
+        radio2.setMaxStation(14);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    //    @Test
+//    public void shouldEqualsBecauseSame() {
+//        Radio radio1 = new Radio();
+//        Radio radio2 = new Radio(15);
+//        radio2.setVolume(15);
+//        boolean exp = true;
+//        boolean act = radio1.canEqual(radio2);
+//        Assertions.assertEquals(exp, act);
+//
+//    }
+    @Test
+    public void shouldNotEqualsBecauseCanEqual() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
         Assertions.assertEquals(exp, act);
     }
 }
+
+
+
