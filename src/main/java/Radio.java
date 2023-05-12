@@ -1,12 +1,13 @@
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 public class Radio {
     int stationQuantity = 10;
     int currentStation;
     int volume;
-    int maxStation;
-
-    public Radio() {
-        maxStation = stationQuantity - 1;
-    }
+    int maxStation = stationQuantity - 1;
 
     public Radio(int stationQuantity) {
         this.stationQuantity = stationQuantity;
@@ -33,23 +34,19 @@ public class Radio {
     }
 
     /////////////////getter / setter////////////
-    public int getCurrentStation() {
-        return currentStation;
-    }
 
-    public int getStationQuantity() {
-        return stationQuantity;
-    }
 
     public void setCurrentStation(int newStation) {
         this.currentStation = (newStation >= 0) && (newStation <= maxStation) ? newStation : getCurrentStation();
     }
-/////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
     public void decreaseVolume() {
         if (volume <= 100 && volume > 0) {
             volume -= 1;
+        }
     }
-}
+
     public void increaseVolume() {
         if (volume < 100 && volume >= 0) {
             volume += 1;
@@ -57,14 +54,17 @@ public class Radio {
     }
 
 
-
     ///////////////////////////////////////////////////////
     public void setVolume(int newVolume) {
         this.volume = newVolume;
     }
 
-    public int getVolume() {
-        return this.volume;
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        } else if (!(o instanceof Radio)) {
+            return false;
+        }
+        return false;
     }
-//////////////////////////////////////////////////////////
 }

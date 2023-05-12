@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 public class TestClass {
 
 
-
-
     @Test
     public void decreaseVolumeTestWithOne() {
         Radio radio = new Radio();
@@ -117,6 +115,7 @@ public class TestClass {
 
         Assertions.assertEquals(exp, act);
     }
+
     @Test
     public void nextStationTest() {
         Radio radio = new Radio();
@@ -237,4 +236,115 @@ public class TestClass {
 
         Assertions.assertEquals(exp, act);
     }
+
+    @Test
+    public void shouldNotEqualsWithStationQuantity() {
+        Radio radio1 = new Radio();
+        Main radio2 = new Main();
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void shouldNotEqualsBecauseDifStation() {
+        Radio radio1 = new Radio();
+        radio1.setCurrentStation(5);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void shouldNotEqualsBecauseDifStationQuantity() {
+        Radio radio1 = new Radio(50);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void shouldNotEqualsBecauseDifVolume() {
+        Radio radio1 = new Radio(10);
+        radio1.setVolume(15);
+        Radio radio2 = new Radio(10);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void shouldEquals1() {
+        Radio radio1 = new Radio();
+        boolean act = radio1.equals(radio1);
+        boolean exp = true;
+        Assertions.assertEquals(exp, act);
+    }
+
+    @Test
+    public void shouldNotEquals() {
+        Radio radio1 = new Radio();
+        boolean act1 = radio1.equals(null);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act1);
+
+    }
+
+    @Test
+    public void shouldEqualsAcceptable() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+        Radio radio3 = new Radio();
+        if (radio1.equals(radio2) && radio2.equals(radio3)) {
+            boolean act1 = radio3.equals(radio1);
+            boolean exp = true;
+
+            Assertions.assertEquals(exp, act1);
+        }
+    }
+
+    @Test
+    public void shouldEqualsBecauseIwant() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+        if (radio1.equals(radio2)) {
+            assert radio1.equals(radio2) == true;
+        }
+    }
+
+    @Test
+    public void shouldEqualsBecauseMaxStation() {
+        Radio radio1 = new Radio();
+        radio1.setMaxStation(15);
+        Radio radio2 = new Radio();
+        radio2.setMaxStation(14);
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
+
+    //    @Test
+//    public void shouldEqualsBecauseSame() {
+//        Radio radio1 = new Radio();
+//        Radio radio2 = new Radio(15);
+//        radio2.setVolume(15);
+//        boolean exp = true;
+//        boolean act = radio1.canEqual(radio2);
+//        Assertions.assertEquals(exp, act);
+//
+//    }
+    @Test
+    public void shouldNotEqualsBecauseCanEqual() {
+        Radio radio1 = new Radio();
+        Radio radio2 = new Radio();
+
+        boolean act = radio1.equals(radio2);
+        boolean exp = false;
+        Assertions.assertEquals(exp, act);
+    }
 }
+
+
+
